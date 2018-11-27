@@ -7,7 +7,7 @@ use Yii;
 /**
  * This is the model class for table "wishes".
  *
- * @property string $id
+ * @property int $id
  * @property string $title
  * @property string $description
  * @property double $price
@@ -34,12 +34,12 @@ class Wishes extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['price'], 'number'],
+            [['price', 'id'], 'number'],
             [['order', 'budget', 'user'], 'integer'],
             [['title'], 'string', 'max' => 50],
             [['description'], 'string', 'max' => 255],
-            [['budget'], 'exist', 'skipOnError' => true, 'targetClass' => Budgets::className(), 'targetAttribute' => ['budget' => 'id']],
-            [['user'], 'exist', 'skipOnError' => true, 'targetClass' => UsersAuth::className(), 'targetAttribute' => ['user' => 'id']],
+            [['budget'], 'exist', 'skipOnError' => true, 'targetClass' => Budgets::class, 'targetAttribute' => ['budget' => 'id']],
+            [['user'], 'exist', 'skipOnError' => true, 'targetClass' => UsersAuth::class, 'targetAttribute' => ['user' => 'id']],
         ];
     }
 

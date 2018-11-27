@@ -7,7 +7,7 @@ use Yii;
 /**
  * This is the model class for table "budgets".
  *
- * @property string $id
+ * @property int $id
  * @property string $title
  * @property string $description
  * @property int $period
@@ -33,7 +33,7 @@ class Budgets extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['period', 'user'], 'integer'],
+            [['period', 'user', 'id'], 'integer'],
             [['start', 'user'], 'required'],
             [['start'], 'safe'],
             [['title'], 'string', 'max' => 50],
@@ -62,7 +62,7 @@ class Budgets extends \yii\db\ActiveRecord
      */
     public function getUser0()
     {
-        return $this->hasOne(UsersAuth::className(), ['id' => 'user']);
+        return $this->hasOne(UsersAuth::class, ['id' => 'user']);
     }
 
     /**
@@ -70,6 +70,6 @@ class Budgets extends \yii\db\ActiveRecord
      */
     public function getWishes()
     {
-        return $this->hasMany(Wishes::className(), ['budget' => 'id']);
+        return $this->hasMany(Wishes::class, ['budget' => 'id']);
     }
 }
