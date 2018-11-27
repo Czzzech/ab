@@ -11,7 +11,7 @@ use Yii;
  * @property string $title
  * @property string $description
  * @property double $price
- * @property string $order
+ * @property int $order
  * @property string $budget
  * @property string $user
  *
@@ -64,7 +64,7 @@ class Wishes extends \yii\db\ActiveRecord
      */
     public function getBudget0()
     {
-        return $this->hasOne(Budgets::className(), ['id' => 'budget']);
+        return $this->hasOne(Budgets::class, ['id' => 'budget']);
     }
 
     /**
@@ -72,6 +72,6 @@ class Wishes extends \yii\db\ActiveRecord
      */
     public function getUser0()
     {
-        return $this->hasOne(UsersAuth::className(), ['id' => 'user']);
+        return $this->hasOne(UsersAuth::class, ['id' => 'user']);
     }
 }
