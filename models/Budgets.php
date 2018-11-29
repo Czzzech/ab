@@ -17,7 +17,7 @@ use Yii;
  * @property UsersAuth $user0
  * @property Wishes[] $wishes
  */
-class Budgets extends \yii\db\ActiveRecord
+class Budgets extends RestModel
 {
     /**
      * {@inheritdoc}

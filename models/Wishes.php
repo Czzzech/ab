@@ -7,7 +7,7 @@ use Yii;
 /**
  * This is the model class for table "wishes".
  *
- * @property int $id
+ * @property string $id
  * @property string $title
  * @property string $description
  * @property double $price
@@ -18,8 +18,22 @@ use Yii;
  * @property Budgets $budget0
  * @property UsersAuth $user0
  */
-class Wishes extends \yii\db\ActiveRecord
+class Wishes extends RestModel
 {
+
+    const GRID_FIELDS = [
+        'title',
+        'description',
+        'price'
+    ];
+
+    const GRID_CONTENT_COMPONENTS = [
+        'title' => 'WishlistTitleColumnComponent',
+        'description' => 'DescriptionColumnComponent'
+    ];
+
+    const GRID_HEADER_COMPONENTS = [];
+
     /**
      * {@inheritdoc}
      */
@@ -34,7 +48,7 @@ class Wishes extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['price', 'id'], 'number'],
+            [['price'], 'number'],
             [['order', 'budget', 'user'], 'integer'],
             [['title'], 'string', 'max' => 50],
             [['description'], 'string', 'max' => 255],
@@ -49,13 +63,13 @@ class Wishes extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'title' => 'Title',
-            'description' => 'Description',
-            'price' => 'Price',
-            'order' => 'Order',
-            'budget' => 'Budget',
-            'user' => 'User',
+            'id'            => 'ID',
+            'title'         => 'Title',
+            'description'   => 'Description',
+            'price'         => 'Price',
+            'order'         => 'Order',
+            'budget'        => 'Budget',
+            'user'          => 'User',
         ];
     }
 

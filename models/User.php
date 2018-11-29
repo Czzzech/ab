@@ -2,9 +2,7 @@
 
 namespace app\models;
 
-use yii\db\ActiveRecord;
-
-class User extends ActiveRecord implements \yii\web\IdentityInterface
+class User extends RestModel implements \yii\web\IdentityInterface
 {
     /**
      * {@inheritdoc}

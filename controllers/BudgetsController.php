@@ -2,10 +2,7 @@
 
 namespace app\controllers;
 
-
-use yii\rest\ActiveController;
-
-class BudgetsController extends ActiveController
+class BudgetsController extends RestController
 {
     public $modelClass = 'app\models\Budgets';
 }

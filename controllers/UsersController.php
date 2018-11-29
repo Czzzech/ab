@@ -2,10 +2,7 @@
 
 namespace app\controllers;
 
-
-use yii\rest\ActiveController;
-
-class UsersController extends ActiveController
+class UsersController extends RestController
 {
     public $modelClass = 'app\models\UsersAuth';
 }

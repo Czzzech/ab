@@ -24,9 +24,13 @@ $config = [
             'enableStrictParsing' => true,
             'showScriptName' => false,
             'rules' => [
-                ['class' => 'yii\rest\UrlRule', 'controller' => 'users'],
-                ['class' => 'yii\rest\UrlRule', 'controller' => 'budgets'],
-                ['class' => 'yii\rest\UrlRule', 'controller' => 'wishes'],
+                [
+                    'class' => 'yii\rest\UrlRule',
+                    'controller' => ['users', 'wishes', 'budgets'],
+                    'extraPatterns' => [
+                        'GET config' => 'config'
+                    ]
+                ],
             ],
         ],
         'cache' => [
