@@ -28,7 +28,7 @@ $config = [
                     'class' => 'yii\rest\UrlRule',
                     'controller' => ['users', 'wishes', 'budgets'],
                     'extraPatterns' => [
-                        'GET config' => 'config'
+                        'GET <action>' => '<action>'
                     ]
                 ],
             ],

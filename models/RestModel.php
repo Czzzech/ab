@@ -14,6 +14,13 @@ class RestModel extends ActiveRecord
     const TYPE_STRING           = 'string';
     const TYPE_DATE             = 'Date';
 
+    const MODAL_CONTENT_TYPE_FORM   = 'form';
+    const MODAL_CONTENT_TYPE_CUSTOM = 'custom';
+
+    const MODAL_HEADER_CONFIG = [];
+    const MODAL_CONTENT_CONFIG = [];
+    const MODAL_FOOTER_CONFIG = [];
+
     /**
      * Список атрибутов, которые будут отображаться в гриде.
      */
@@ -56,6 +63,17 @@ class RestModel extends ActiveRecord
         return static::FILTERS_CONFIGS[$field] ?? [];
     }
 
+    public function modalConfig(){
+        $config = [
+            'header' => static::MODAL_HEADER_CONFIG,
+            'content' => static::MODAL_CONTENT_CONFIG,
+            'footer' => static::MODAL_FOOTER_CONFIG
+        ];
+        if($config['content']['type'] === self::MODAL_CONTENT_TYPE_FORM){
+            $config['content']['formContent'] = $this->getFormConfig();
+        }
+        return $config;
+    }
 
     public function fieldsConfigs(){
         $config = [];
