@@ -7,8 +7,8 @@ use yii\db\ActiveRecord;
 
 class RestModel extends ActiveRecord
 {
-    const FIELD_TEXT_FIELD      = 'TextField';
-    const FIELD_DATE            = 'DateField';
+    const FIELD_TEXT_FIELD      = 'TextFieldComponent';
+    const FIELD_DATE            = 'DateFieldComponent';
 
     const TYPE_NUMBER           = 'number';
     const TYPE_STRING           = 'string';
@@ -70,7 +70,7 @@ class RestModel extends ActiveRecord
             'footer' => static::MODAL_FOOTER_CONFIG
         ];
         if($config['content']['type'] === self::MODAL_CONTENT_TYPE_FORM){
-            $config['content']['formContent'] = $this->getFormConfig();
+            $config['content']['formConfig'] = $this->getFormConfig();
         }
         return $config;
     }

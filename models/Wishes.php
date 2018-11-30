@@ -105,26 +105,40 @@ class Wishes extends RestModel
 
     public function getFormConfig(){
         return [
-            'id'            => [
-                'type' => self::FIELD_TEXT_FIELD
+            [
+                'component' => self::FIELD_TEXT_FIELD,
+                'key' => 'id',
+                'title' => $this->getAttributeLabel('id')
             ],
-            'title'         => [
-                'type' => self::FIELD_TEXT_FIELD
+            [
+                'component' => self::FIELD_TEXT_FIELD,
+                'key' => 'title',
+                'title' => $this->getAttributeLabel('title')
             ],
-            'description'   => [
-                'type' => self::FIELD_TEXT_FIELD
+            [
+                'component' => self::FIELD_DATE,
+                'key' => 'description',
+                'title' => $this->getAttributeLabel('description')
             ],
-            'price'         => [
-                'type' => self::FIELD_TEXT_FIELD
+            [
+                'component' => self::FIELD_TEXT_FIELD,
+                'key' => 'price',
+                'title' => $this->getAttributeLabel('price')
             ],
-            'order'         => [
-                'type' => self::FIELD_TEXT_FIELD
+            [
+                'component' => self::FIELD_DATE,
+                'key' => 'order',
+                'title' => $this->getAttributeLabel('order')
             ],
-            'budget'        => [
-                'type' => self::FIELD_TEXT_FIELD
+            [
+                'component' => self::FIELD_TEXT_FIELD,
+                'key' => 'budget',
+                'title' => $this->getAttributeLabel('budget')
             ],
-            'user'          => [
-                'type' => self::FIELD_TEXT_FIELD
+            [
+                'component' => self::FIELD_TEXT_FIELD,
+                'key' => 'user',
+                'title' => $this->getAttributeLabel('user')
             ],
         ];
     }
