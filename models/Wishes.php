@@ -25,12 +25,11 @@ class Wishes extends RestModel
         'title' => '{title}', //В скобках поле из модели будет подставлено значение
         'titleForNew' => 'New wish',
         'closeButton' => true,
-        'bg' => 'dark'
+        'bg' => 'warning'
     ];
     const MODAL_CONTENT_CONFIG = [
         'type' => self::MODAL_CONTENT_TYPE_FORM,
-        'formConfig' => [],
-        'bg' => 'warning'
+        'formConfig' => []
     ];
     const MODAL_FOOTER_CONFIG = [
         'bg' => 'dark',
@@ -116,7 +115,7 @@ class Wishes extends RestModel
                 'title' => $this->getAttributeLabel('title')
             ],
             [
-                'component' => self::FIELD_DATE,
+                'component' => self::FIELD_TEXT_FIELD,
                 'key' => 'description',
                 'title' => $this->getAttributeLabel('description')
             ],
@@ -126,7 +125,7 @@ class Wishes extends RestModel
                 'title' => $this->getAttributeLabel('price')
             ],
             [
-                'component' => self::FIELD_DATE,
+                'component' => self::FIELD_TEXT_FIELD,
                 'key' => 'order',
                 'title' => $this->getAttributeLabel('order')
             ],
