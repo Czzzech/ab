@@ -127,7 +127,8 @@ class Wishes extends RestModel
             [
                 'component' => self::FIELD_TEXT_FIELD,
                 'key' => 'price',
-                'title' => $this->getAttributeLabel('price')
+                'title' => $this->getAttributeLabel('price'),
+                'icon' => 'hryvnia'
             ],
             [
                 'component' => self::FIELD_TEXT_FIELD,
