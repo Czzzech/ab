@@ -38,6 +38,11 @@ class Wishes extends RestModel
                 'class' => 'btn-primary',
                 'text' => 'Save',
                 'action' => 'save'
+            ],
+            [
+                'class' => 'btn-success',
+                'text' => 'Confirm',
+                'action' => 'confirm'
             ]
         ]
     ];
