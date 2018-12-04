@@ -8,6 +8,7 @@ use yii\db\ActiveRecord;
 class RestModel extends ActiveRecord
 {
     const FIELD_TEXT_FIELD      = 'TextFieldComponent';
+    const FIELD_TEXT_AREA       = 'TextAreaComponent';
     const FIELD_DATE            = 'DateFieldComponent';
 
     const TYPE_NUMBER           = 'number';

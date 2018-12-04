@@ -111,39 +111,62 @@ class Wishes extends RestModel
         return [
             [
                 'component' => self::FIELD_TEXT_FIELD,
+                'description' => 'Description for id',
                 'key' => 'id',
-                'title' => $this->getAttributeLabel('id')
+                'title' => $this->getAttributeLabel('id'),
+                'visible' => false
             ],
             [
                 'component' => self::FIELD_TEXT_FIELD,
+                'description' => 'Description for ttile',
                 'key' => 'title',
-                'title' => $this->getAttributeLabel('title')
+                'title' => $this->getAttributeLabel('title'),
+                'required' => true,
+                'icon' => 'marker'
             ],
             [
-                'component' => self::FIELD_TEXT_FIELD,
+                'component' => self::FIELD_TEXT_AREA,
+                'description' => 'Description for description',
                 'key' => 'description',
-                'title' => $this->getAttributeLabel('description')
+                'title' => $this->getAttributeLabel('description'),
+                'icon' => 'grin-alt',
+                'required' => true,
+                'height' => '200px'
             ],
             [
                 'component' => self::FIELD_TEXT_FIELD,
+                'description' => 'Description for price',
                 'key' => 'price',
                 'title' => $this->getAttributeLabel('price'),
-                'icon' => 'hryvnia'
+                'icon' => 'hryvnia',
+                'required' => true,
+                'pattern' => [
+                    'match' => '[1-9]{1}\d{0,8}',
+                    'errorText' => 'Price must be ceil from 1 to 999999999'
+                ]
             ],
             [
                 'component' => self::FIELD_TEXT_FIELD,
+                'description' => 'Description for order',
                 'key' => 'order',
-                'title' => $this->getAttributeLabel('order')
+                'title' => $this->getAttributeLabel('order'),
+                'visible' => false
             ],
             [
                 'component' => self::FIELD_TEXT_FIELD,
+                'description' => 'Description for budget',
                 'key' => 'budget',
-                'title' => $this->getAttributeLabel('budget')
+                'title' => $this->getAttributeLabel('budget'),
+                'disabled' => true,
+                'visible' => false
             ],
             [
                 'component' => self::FIELD_TEXT_FIELD,
+                'description' => 'Description for user',
                 'key' => 'user',
-                'title' => $this->getAttributeLabel('user')
+                'title' => $this->getAttributeLabel('user'),
+                'disabled' => true,
+                'visible' => false
             ],
         ];
     }
