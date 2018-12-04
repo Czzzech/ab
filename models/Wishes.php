@@ -131,7 +131,7 @@ class Wishes extends RestModel
                 'title' => $this->getAttributeLabel('description'),
                 'icon' => 'grin-alt',
                 'required' => true,
-                'height' => '200px'
+                'height' => '70px'
             ],
             [
                 'component' => self::FIELD_TEXT_FIELD,
