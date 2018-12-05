@@ -130,8 +130,6 @@ class Wishes extends RestModel
                 'key' => 'description',
                 'title' => $this->getAttributeLabel('description'),
                 'icon' => 'grin-alt',
-                'required' => true,
-                'height' => '70px'
             ],
             [
                 'component' => self::FIELD_TEXT_FIELD,
@@ -141,8 +139,9 @@ class Wishes extends RestModel
                 'icon' => 'hryvnia',
                 'required' => true,
                 'pattern' => [
-                    'match' => '[1-9]{1}\d{0,8}',
-                    'errorText' => 'Price must be ceil from 1 to 999999999'
+                    'match' => '^[1-9]\d{0,8}$',
+                    'errorText' => 'Price must be ceil from 1 to 999999999',
+                    'inputCheck' => true
                 ]
             ],
             [
