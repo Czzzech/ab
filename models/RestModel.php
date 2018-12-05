@@ -80,6 +80,7 @@ class RestModel extends ActiveRecord
         $config = [];
         foreach (array_keys($this->attributes) as $field){
             $config[] = [
+                'model' => $this->tableName(),
                 'key' => $field,
                 'header' => [
                     'component' => $this->getHeaderComponent($field),
