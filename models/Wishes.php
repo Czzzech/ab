@@ -75,6 +75,7 @@ class Wishes extends RestModel
             [['description'], 'string', 'max' => 255],
             [['budget'], 'exist', 'skipOnError' => true, 'targetClass' => Budgets::class, 'targetAttribute' => ['budget' => 'id']],
             [['user'], 'exist', 'skipOnError' => true, 'targetClass' => UsersAuth::class, 'targetAttribute' => ['user' => 'id']],
+            [['sprint'], 'exist', 'skipOnError' => true, 'targetClass' => Sprints::class, 'targetAttribute' => ['sprint' => 'id']],
         ];
     }
 
@@ -91,6 +92,7 @@ class Wishes extends RestModel
             'order'         => 'Order',
             'budget'        => 'Budget',
             'user'          => 'User',
+            'sprint'        => 'Sprint',
         ];
     }
 
@@ -162,6 +164,14 @@ class Wishes extends RestModel
                 'disabled' => true,
                 'visible' => false
             ],
+            [
+                'component' => self::FIELD_TEXT_FIELD,
+                'description' => 'Description for sprint',
+                'key' => 'sprint',
+                'title' => $this->getAttributeLabel('sprint'),
+                'disabled' => true,
+                'visible' => false
+            ]
         ];
     }
 
@@ -171,5 +181,13 @@ class Wishes extends RestModel
     public function getUser0()
     {
         return $this->hasOne(UsersAuth::class, ['id' => 'user']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getSprint0()
+    {
+        return $this->hasOne(Sprints::class, ['id' => 'sprint']);
     }
 }

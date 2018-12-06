@@ -72,4 +72,12 @@ class Budgets extends RestModel
     {
         return $this->hasMany(Wishes::class, ['budget' => 'id']);
     }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getSprints()
+    {
+        return $this->hasMany(Sprints::class, ['sprint' => 'id']);
+    }
 }
