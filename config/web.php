@@ -19,19 +19,24 @@ $config = [
                 'application/json' => 'yii\web\JsonParser',
             ]
         ],
+        'i18n' => [
+            'translations' => [
+                'app' => [
+                    'class' => 'yii\i18n\DbMessageSource'
+                ]
+            ],
+        ],
         'urlManager' => [
+            'class' => 'app\components\Manager',
             'enablePrettyUrl' => true,
-            'enableStrictParsing' => true,
             'showScriptName' => false,
             'rules' => [
-                [
-                    'class' => 'yii\rest\UrlRule',
-                    'controller' => ['users', 'wishes', 'budgets'],
-                    'extraPatterns' => [
-                        'GET modalcfg' => 'modalcfg',
-                        'GET config' => 'config'
-                    ]
-                ],
+                '<controller>' => '<controller>',
+
+                '<controller>/view/<id:\d+>'     => '<controller>/view',
+                '<controller>/<action>/<id:\d+>' => '<controller>/<action>',
+
+                '<controller>/<action>' => '<controller>/<action>'
             ],
         ],
         'cache' => [

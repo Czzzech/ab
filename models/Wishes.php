@@ -2,6 +2,8 @@
 
 namespace app\models;
 
+use app\utils\constants\Fields;
+use app\utils\constants\ModalContentTypes;
 use Yii;
 
 /**
@@ -28,9 +30,10 @@ class Wishes extends RestModel
         'bg' => 'warning'
     ];
     const MODAL_CONTENT_CONFIG = [
-        'type' => self::MODAL_CONTENT_TYPE_FORM,
+        'type' => ModalContentTypes::FORM,
         'formConfig' => []
     ];
+
     const MODAL_FOOTER_CONFIG = [
         'bg' => 'dark',
         'buttons' => [
@@ -107,14 +110,14 @@ class Wishes extends RestModel
     public function getFormConfig(){
         return [
             [
-                'component' => self::FIELD_TEXT_FIELD,
+                'component' => Fields::TEXT_FIELD,
                 'description' => 'Description for id',
                 'key' => 'id',
                 'title' => $this->getAttributeLabel('id'),
                 'visible' => false
             ],
             [
-                'component' => self::FIELD_TEXT_FIELD,
+                'component' => Fields::TEXT_FIELD,
                 'description' => 'Description for ttile',
                 'key' => 'title',
                 'title' => $this->getAttributeLabel('title'),
@@ -122,14 +125,14 @@ class Wishes extends RestModel
                 'icon' => 'marker'
             ],
             [
-                'component' => self::FIELD_TEXT_AREA,
+                'component' => Fields::TEXT_FIELD,
                 'description' => 'Description for description',
                 'key' => 'description',
                 'title' => $this->getAttributeLabel('description'),
                 'icon' => 'grin-alt',
             ],
             [
-                'component' => self::FIELD_TEXT_FIELD,
+                'component' => Fields::TEXT_FIELD,
                 'description' => 'Description for price',
                 'key' => 'price',
                 'title' => $this->getAttributeLabel('price'),
@@ -142,14 +145,14 @@ class Wishes extends RestModel
                 ]
             ],
             [
-                'component' => self::FIELD_TEXT_FIELD,
+                'component' => Fields::TEXT_FIELD,
                 'description' => 'Description for order',
                 'key' => 'order',
                 'title' => $this->getAttributeLabel('order'),
                 'visible' => false
             ],
             [
-                'component' => self::FIELD_TEXT_FIELD,
+                'component' => Fields::TEXT_FIELD,
                 'description' => 'Description for budget',
                 'key' => 'budget',
                 'title' => $this->getAttributeLabel('budget'),
@@ -157,7 +160,7 @@ class Wishes extends RestModel
                 'visible' => false
             ],
             [
-                'component' => self::FIELD_TEXT_FIELD,
+                'component' => Fields::TEXT_FIELD,
                 'description' => 'Description for user',
                 'key' => 'user',
                 'title' => $this->getAttributeLabel('user'),
@@ -165,7 +168,7 @@ class Wishes extends RestModel
                 'visible' => false
             ],
             [
-                'component' => self::FIELD_TEXT_FIELD,
+                'component' => Fields::TEXT_FIELD,
                 'description' => 'Description for sprint',
                 'key' => 'sprint',
                 'title' => $this->getAttributeLabel('sprint'),

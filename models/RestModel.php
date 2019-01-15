@@ -3,20 +3,11 @@
 namespace app\models;
 
 
+use app\utils\constants\ModalContentTypes;
 use yii\db\ActiveRecord;
 
 class RestModel extends ActiveRecord
 {
-    const FIELD_TEXT_FIELD      = 'TextFieldComponent';
-    const FIELD_TEXT_AREA       = 'TextAreaComponent';
-    const FIELD_DATE            = 'DateFieldComponent';
-
-    const TYPE_NUMBER           = 'number';
-    const TYPE_STRING           = 'string';
-    const TYPE_DATE             = 'Date';
-
-    const MODAL_CONTENT_TYPE_FORM   = 'form';
-    const MODAL_CONTENT_TYPE_CUSTOM = 'custom';
 
     const MODAL_HEADER_CONFIG = [];
     const MODAL_CONTENT_CONFIG = [];
@@ -32,7 +23,7 @@ class RestModel extends ActiveRecord
     /**
      * Компоненты, которые используются для отрисовки поля в гриде Angular - заголовок колонки
      * Нужно описывать в каждой модели
-     * По умолчанию пустой компонент орисуется дефолтным GridBaseHeaderCellComponent
+     * По умолчанию пустой компонент отрисуется дефолтным GridBaseHeaderCellComponent
      * Важно!!! Не забывайте добавлять эти компоненты в DynamicComponentsMapping service в Angular
      */
     const GRID_HEADER_COMPONENTS     = [];
@@ -50,7 +41,8 @@ class RestModel extends ActiveRecord
      * Нужно описывать в каждой модели, если нужно.
      * По умолчанию нет никаких фильтров.
      */
-    const FILTERS_CONFIGS    = [];
+    const GRID_FILTERS    = [];
+    const GRID_PAGINATION    = [];
 
     protected function getHeaderComponent($field){
         return static::GRID_HEADER_COMPONENTS[$field] ?? '';
@@ -70,29 +62,28 @@ class RestModel extends ActiveRecord
             'content' => static::MODAL_CONTENT_CONFIG,
             'footer' => static::MODAL_FOOTER_CONFIG
         ];
-        if($config['content']['type'] === self::MODAL_CONTENT_TYPE_FORM){
+        if($config['content']['type'] === ModalContentTypes::FORM){
             $config['content']['formConfig'] = $this->getFormConfig();
         }
         return $config;
     }
 
-    public function fieldsConfigs(){
-        $config = [];
-        foreach (array_keys($this->attributes) as $field){
-            $config[] = [
-                'model' => $this->tableName(),
-                'key' => $field,
-                'header' => [
-                    'component' => $this->getHeaderComponent($field),
-                    'title' => $this->getAttributeLabel($field)
-                ],
-                'content' => [
-                    'component' => $this->getContentComponent($field),
-                ],
-                'show' => in_array($field, static::GRID_FIELDS),
-                'filters' => $this->getFilterConfig($field),
-            ];
-        }
+    public function getConfigs(){
+        $config = [
+            'modal' => $this->modalConfig(),
+            'grid' => $this->getGridConfig()
+        ];
+
         return $config;
+    }
+
+    protected function getGridConfig(){
+        return [
+            'header' => static::GRID_HEADER_COMPONENTS,
+            'content' => static::GRID_CONTENT_COMPONENTS,
+            'columns' => static::GRID_FIELDS,
+            'filters' => static::GRID_FILTERS,
+            'pagination' => static::GRID_PAGINATION
+        ];
     }
 }

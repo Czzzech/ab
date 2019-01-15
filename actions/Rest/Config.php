@@ -2,14 +2,14 @@
 
 namespace app\actions\Rest;
 
-use yii\rest\Action;
+use app\actions\BaseAction;
 
-class Config extends Action
+class Config extends BaseAction
 {
     public function run(){
 
-        return \Yii::createObject([
-            (new $this->modelClass())->getFieldsConfigs()
-        ]);
+        return json_encode(
+            (new $this->modelClass())->getConfigs()
+        );
     }
 }

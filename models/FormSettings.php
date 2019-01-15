@@ -3,26 +3,11 @@
 namespace app\models;
 
 use Yii;
-
-/**
- * This is the model class for table "sprintes".
- *
- * @property string $id
- * @property string $budget
- * @property string $start
- * @property double $spend
- *
- * @property Budgets $budget0
- * @property Wishes[] $wishes
- */
-class Sprints extends \yii\db\ActiveRecord
+class FormSettings extends RestModel
 {
-    /**
-     * {@inheritdoc}
-     */
     public static function tableName()
     {
-        return 'sprints';
+        return 'form_settings';
     }
 
     /**
@@ -34,9 +19,7 @@ class Sprints extends \yii\db\ActiveRecord
             [['budget', 'user'], 'required'],
             [['budget', 'user'], 'integer'],
             [['start'], 'safe'],
-            [['spend'], 'number'],
-            [['budget'], 'exist', 'skipOnError' => true, 'targetClass' => Budgets::class, 'targetAttribute' => ['budget' => 'id']],
-            [['user'], 'exist', 'skipOnError' => true, 'targetClass' => UsersAuth::class, 'targetAttribute' => ['user' => 'id']],
+            [['model'], 'string'],
         ];
     }
 
